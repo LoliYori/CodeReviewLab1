@@ -1,12 +1,12 @@
 /**
  * @file expression_calculator.cpp
- * @brief Реализация функций для вычисления выражений
+ * @brief ГђГҐГ Г«ГЁГ§Г Г¶ГЁГї ГґГіГ­ГЄГ¶ГЁГ© Г¤Г«Гї ГўГ»Г·ГЁГ±Г«ГҐГ­ГЁГї ГўГ»Г°Г Г¦ГҐГ­ГЁГ©
  */
 #include "expression_calculator.h"
 
 
 
-//FIXME: вынесено в функцию
+//FIXME: Р”РѕР±Р°РІР»РµРЅР° С„СѓРЅРєС†РёСЏ
 int EvaluateElement(const std::string& element_str) {
     if (element_str.front() == '(' && element_str.back() == ')') {
         return CalculateExpression(element_str.substr(1, element_str.size() - 2));
@@ -14,14 +14,14 @@ int EvaluateElement(const std::string& element_str) {
     return std::stoi(element_str);
 }
 
-//FIXME: вынесено в функцию
+//FIXME: Р”РѕР±Р°РІР»РµРЅР° С„СѓРЅРєС†РёСЏ
 int EvaluateTerm(const std::string& term_str) {
-    //FIXME: изменено название переменных 
+    //FIXME: РР·РјРµРЅРµРЅС‹ РЅР°Р·РІР°РЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С…
     int current_position = term_str.size() - 1;
     int parenthesis_level = 0;
     int operator_position = -1;
 
-    //FIXME: Изменено на постфиксную
+    //FIXME: РР·РјРµРЅРµРЅРѕ РЅР° РїСЂРµС„РёРєСЃРЅСѓСЋ 
     while (current_position >= 0) {
         if (term_str[current_position] == ')') {
             
@@ -44,14 +44,15 @@ int EvaluateTerm(const std::string& term_str) {
         EvaluateElement(term_str.substr(operator_position + 1));
 }
 
-//FIXME: вынесено в функцию
+//FIXME: Р”РѕР±Р°РІР»РµРЅР° С„СѓРЅРєС†РёСЏ
 int CalculateExpression(const std::string& expression) {
-    //FIXME: изменено название переменных 
+    //FIXME: РР·РјРµРЅРµРЅС‹ РЅР°Р·РІР°РЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С…
+    //FIXME: РРЅРёС†РёР°Р»РёР·РёСЂРѕРІРЅС‹ РїРµСЂРµРјРµРЅРЅС‹Рµ 
     int current_position = expression.size() - 1;
     int parenthesis_level = 0;
     int operator_position = -1;
 
-    //FIXME: Изменено на постфиксную
+    //FIXME: РР·РјРµРЅРЅРѕ РЅР° РїСЂРµС„РёРєСЃРЅСѓСЋ
     while (current_position >= 0) {
         if (expression[current_position] == ')') {
             ++parenthesis_level;
@@ -71,7 +72,7 @@ int CalculateExpression(const std::string& expression) {
         return EvaluateTerm(expression);
     }
 
-    //FIXME: Изменено название переменной
+    //FIXME: РР·РјРµРЅРµРЅРѕ РЅР°Р·РІР°РЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№ 
     char operation = expression[operator_position];
     if (operation == '+') {
         return CalculateExpression(expression.substr(0, operator_position)) +
