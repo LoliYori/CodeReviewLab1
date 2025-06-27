@@ -18,19 +18,17 @@ double CalculateValidNumbersCount(int base, int digits_count) {
     double numbers_with_single_zero = 1;
     double numbers_with_double_zero = 0;
 
+    // FIXME: Изменено на префиксную
     for (int current_digit = 2; current_digit <= digits_count; ++current_digit) {
         double prev_without_zero = numbers_without_zero;
         double prev_with_single_zero = numbers_with_single_zero;
         double prev_with_double_zero = numbers_with_double_zero;
 
-        // Новые числа без двух нулей:
         numbers_without_zero = prev_without_zero * (base - 1) + 
                               prev_with_single_zero * (base - 1);
         
-        // Новые числа с одним нулём на конце:
         numbers_with_single_zero = prev_without_zero;
         
-        // Новые числа с двумя нулями:
         numbers_with_double_zero = prev_with_double_zero * base + 
                                   prev_with_single_zero;
     }
