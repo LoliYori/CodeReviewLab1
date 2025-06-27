@@ -1,25 +1,28 @@
 /**
  * @file main.cpp
- * @brief Главный файл программы для задачи о черепашке
+ * @brief ГѓГ«Г ГўГ­Г»Г© ГґГ Г©Г« ГЇГ°Г®ГЈГ°Г Г¬Г¬Г» Г¤Г«Гї Г§Г Г¤Г Г·ГЁ Г® Г·ГҐГ°ГҐГЇГ ГёГЄГҐ
  */
 
 #include "turtle_path.h"
-// FIXME: убран WindowH
+// FIXME: РЈР±СЂР°РЅ windows.h
 
 int main() {
     try {
-        std::cout << "Выберите способ ввода:\n"
-            << "1. Загрузить из файла\n"
-            << "2. Ввести вручную\n"
-            << "3. Сгенерировать случайную доску\n"
-            << "Ваш выбор: ";
+        std::cout << "Г‚Г»ГЎГҐГ°ГЁГІГҐ Г±ГЇГ®Г±Г®ГЎ ГўГўГ®Г¤Г :\n"
+            << "1. Г‡Г ГЈГ°ГіГ§ГЁГІГј ГЁГ§ ГґГ Г©Г«Г \n"
+            << "2. Г‚ГўГҐГ±ГІГЁ ГўГ°ГіГ·Г­ГіГѕ\n"
+            << "3. Г‘ГЈГҐГ­ГҐГ°ГЁГ°Г®ГўГ ГІГј Г±Г«ГіГ·Г Г©Г­ГіГѕ Г¤Г®Г±ГЄГі\n"
+            << "Г‚Г Гё ГўГ»ГЎГ®Г°: ";
 
+        // FIXME: РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅР° РїРµСЂРµРјРµРЅРЅР°СЏ
         int choice = 0;
-        if (!(std::cin >> choice)) {  // FIXME: Добавлена проверка ввода
-            std::cerr << "Ошибка: Некорректный ввод выбора" << std::endl;
+         // FIXME: Р”РѕР±Р°РІР»РµРЅР° РїСЂРѕРІРµСЂРєР°
+        if (!(std::cin >> choice)) {
+            std::cerr << "ГЋГёГЁГЎГЄГ : ГЌГҐГЄГ®Г°Г°ГҐГЄГІГ­Г»Г© ГўГўГ®Г¤ ГўГ»ГЎГ®Г°Г " << std::endl;
             return 1;
         }
 
+        // FIXME: РРЅРёС†РёР°Р»РёР·РёСЂРѕРІР°РЅР° РїРµСЂРµРјРµРЅРЅР°СЏ
         int board_size = 0;
         std::vector<std::vector<int>> board;
 
@@ -34,17 +37,17 @@ int main() {
             board = GenerateRandomBoard(board_size);
             break;
         default:
-            std::cerr << "Ошибка: Неверный выбор" << std::endl;
+            std::cerr << "ГЋГёГЁГЎГЄГ : ГЌГҐГўГҐГ°Г­Г»Г© ГўГ»ГЎГ®Г°" << std::endl;
             return 1;
         }
 
-        if (board.empty()) {  // FIXME: Добавлена проверка вывода
-            std::cerr << "Ошибка: Не удалось создать доску" << std::endl;
+        // FIXME: Р”РѕР±Р°РІР»РµРЅР° РїСЂРѕРІРµСЂРєР°
+        if (board.empty()) {  
+            std::cerr << "ГЋГёГЁГЎГЄГ : ГЌГҐ ГіГ¤Г Г«Г®Г±Гј Г±Г®Г§Г¤Г ГІГј Г¤Г®Г±ГЄГі" << std::endl;
             return 1;
         }
 
-        std::cout << "\nИгровая доска:\n";
-        // FIXME: исправлены циклы
+        std::cout << "\nГ€ГЈГ°Г®ГўГ Гї Г¤Г®Г±ГЄГ :\n";
         for (const auto& row : board) {
             for (int val : row) {
                 std::cout << val << " ";
@@ -53,17 +56,16 @@ int main() {
         }
 
         int max_sum = CalculateMaxPathSum(board, board_size);
-        std::cout << "\nМаксимальная сумма пути: " << max_sum << std::endl;
-
-        // Запись результатов в файл
+        std::cout << "\nГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г Гї Г±ГіГ¬Г¬Г  ГЇГіГІГЁ: " << max_sum << std::endl;
+        
         std::ofstream output("output.txt");
-        // FIXME: добавлена проверка
+        // FIXME: Р”РѕР±Р°РІР»РµРЅР° РїСЂРѕРІРµСЂРєР° РЅР° РІС‹РІРѕРґ
         if (!output.is_open()) {
-            std::cerr << "Ошибка: Не удалось создать файл для записи результатов" << std::endl;
+            std::cerr << "ГЋГёГЁГЎГЄГ : ГЌГҐ ГіГ¤Г Г«Г®Г±Гј Г±Г®Г§Г¤Г ГІГј ГґГ Г©Г« Г¤Г«Гї Г§Г ГЇГЁГ±ГЁ Г°ГҐГ§ГіГ«ГјГІГ ГІГ®Гў" << std::endl;
             return 1;
         }
 
-        output << "Игровая доска:\n";
+        output << "Г€ГЈГ°Г®ГўГ Гї Г¤Г®Г±ГЄГ :\n";
         for (const auto& row : board) {
             for (int val : row) {
                 output << val << " ";
@@ -71,14 +73,14 @@ int main() {
             output << "\n";
         }
 
-        output << "\nМаксимальная сумма пути: " << max_sum << std::endl;
+        output << "\nГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г Гї Г±ГіГ¬Г¬Г  ГЇГіГІГЁ: " << max_sum << std::endl;
         output.close();
 
-        std::cout << "\nРезультаты сохранены в файл output.txt" << std::endl;
+        std::cout << "\nГђГҐГ§ГіГ«ГјГІГ ГІГ» Г±Г®ГµГ°Г Г­ГҐГ­Г» Гў ГґГ Г©Г« output.txt" << std::endl;
 
     }
     catch (const std::exception& e) {
-        std::cerr << "Произошла ошибка: " << e.what() << std::endl;
+        std::cerr << "ГЏГ°Г®ГЁГ§Г®ГёГ«Г  Г®ГёГЁГЎГЄГ : " << e.what() << std::endl;
         return 1;
     }
 
