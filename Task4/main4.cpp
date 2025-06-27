@@ -1,17 +1,18 @@
 /**
  * @file main.cpp
- * @brief Программа для вычисления целочисленных выражений
+ * @brief ГЏГ°Г®ГЈГ°Г Г¬Г¬Г  Г¤Г«Гї ГўГ»Г·ГЁГ±Г«ГҐГ­ГЁГї Г¶ГҐГ«Г®Г·ГЁГ±Г«ГҐГ­Г­Г»Гµ ГўГ»Г°Г Г¦ГҐГ­ГЁГ©
  */
 #include "expression_calculator.h"
 
+// FIXME: С„СѓРЅРєС†РёРё РІС‹РЅРµСЃРµРЅС‹ РІ РѕС‚РґРµР»СЊРЅС‹Р№ С„Р°Р№Р», РґРѕР±Р°РІР»РµРЅ РґР¶Р°РІР°РґРѕРє
 int main() {
-    //FIXME: Изменено название переменной
+    //FIXME: РР·РјРµРЅРµРЅРѕ РЅР°Р·РІР°РЅРёРµ РїРµСЂРµРјРµРЅРЅРѕР№
     std::string input_expression;
-    std::cout << "Введите выражение: ";
+    std::cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГўГ»Г°Г Г¦ГҐГ­ГЁГҐ: ";
     std::getline(std::cin, input_expression);
 
     int result = CalculateExpression(input_expression);
-    std::cout << "Ответ: " << result << std::endl;
+    std::cout << "ГЋГІГўГҐГІ: " << result << std::endl;
 
     return 0;
 }
