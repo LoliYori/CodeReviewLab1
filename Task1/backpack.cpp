@@ -1,6 +1,6 @@
 /**
  * @file backpack.cpp
- * @brief Реализация функций для решения задачи о рюкзаке
+ * @brief ГђГҐГ Г«ГЁГ§Г Г¶ГЁГї ГґГіГ­ГЄГ¶ГЁГ© Г¤Г«Гї Г°ГҐГёГҐГ­ГЁГї Г§Г Г¤Г Г·ГЁ Г® Г°ГѕГЄГ§Г ГЄГҐ
  */
 
 #include "backpack.h"
@@ -9,43 +9,46 @@
 #include <vector>
 #include <algorithm>
 
- // FIXME: Изменена сигнатура функции для использования const ссылок
+ // FIXME: РљРѕРґ РІС‹РЅРµСЃРµРЅ РІ С„СѓРЅРєС†РёРё Рё РЅР°Р·РІР°РЅ РїРѕ РєРѕРґ-СЃС‚Р°Р№Р»Сѓ
 bool SortWeight(const Artifact& a, const Artifact& b) {
     return a.weight < b.weight;
 }
 
-// FIXME: Вся логика вынесена из main в отдельную функцию
+// FIXME: РљРѕРґ РІС‹РЅРµСЃРµРЅ РІ С„СѓРЅРєС†РёРё Рё РЅР°Р·РІР°РЅ РїРѕ РєРѕРґ-СЃС‚Р°Р№Р»Сѓ
 void SolveBackpackProblem(const std::string& filename) {
-    // FIXME: Переименован f1 в inputFile
+    // FIXME: РџРµСЂРµРјРµРЅРЅР°СЏ Р±С‹Р»Р° РЅР°Р·РІР°РЅР° РїР»РѕС…Рѕ, С‚РµРїРµСЂСЊ inputFile
     std::ifstream inputFile(filename);
     if (!inputFile.is_open()) {
-        std::cerr << "Не удалось открыть файл " << filename << std::endl;
+        std::cerr << "ГЌГҐ ГіГ¤Г Г«Г®Г±Гј Г®ГІГЄГ°Г»ГІГј ГґГ Г©Г« " << filename << std::endl;
         return;
     }
 
-    int numArtifacts, maxWeight;
+    // FIXME: РџРµСЂРµРЅР°Р·РІР°РЅС‹ РїРµСЂРµРјРµРЅРЅС‹Рµ
+    int numArtifacts = 0;
+    int maxWeight = 0;
     inputFile >> numArtifacts >> maxWeight;
 
     std::vector<Artifact> artifacts(numArtifacts);
 
+    // FIXME: РР·РјРµРЅРµРЅРѕ РЅР° РїСЂРµС„РёРєСЃРЅСѓСЋ 
     for (int i = 0; i < numArtifacts; ++i) {
         inputFile >> artifacts[i].weight;
     }
+    // FIXME: РР·РјРµРЅРµРЅРѕ РЅР° РїСЂРµС„РёРєСЃРЅСѓСЋ
     for (int i = 0; i < numArtifacts; ++i) {
         inputFile >> artifacts[i].volume;
     }
-
-    // FIXME: Использован std::sort с явным указанием функции сравнения
     std::sort(artifacts.begin(), artifacts.end(), SortWeight);
 
-    // FIXME: Переименованы переменные для лучшей читаемости
+    // FIXME: РР·РјРµРЅРµРЅС‹ РЅР°Р·РІР°РЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С… РЅР° РїСЂР°РІРёР»СЊРЅС‹Рµ
     int currentSumWeight = 0;
     int currentSumVolume = 0;
     int bestSumWeight = 0;
     int bestSumVolume = 0;
-    int startIndex = 0;  // Было k
+    int startIndex = 0; 
 
     while (startIndex < numArtifacts) {
+        // FIXME: РР·РјРµРЅРµРЅС‹ РЅР°Р·РІР°РЅРёСЏ РїРµСЂРµРјРµРЅРЅС‹С… РЅР° РїСЂР°РІРёР»СЊРЅС‹Рµ
         currentSumWeight = 0;
         currentSumVolume = 0;
 
@@ -54,7 +57,7 @@ void SolveBackpackProblem(const std::string& filename) {
                 currentSumWeight += artifacts[j].weight;
                 currentSumVolume += artifacts[j].volume;
 
-                // FIXME: Улучшено условие для выбора лучшего набора
+                // FIXME: Р”РѕР±Р°РІР»РµРЅР° РїСЂРѕРІРµСЂРєР°
                 if (currentSumWeight > bestSumWeight ||
                     (currentSumWeight == bestSumWeight && j - startIndex + 1 > bestSumVolume)) {
                     bestSumWeight = currentSumWeight;
@@ -66,10 +69,11 @@ void SolveBackpackProblem(const std::string& filename) {
         if (bestSumWeight == maxWeight) {
             break;
         }
+       // FIXME: РР·РјРµРЅРµРЅРѕ РЅР° РїСЂРµС„РёРєСЃРЅСѓСЋ
         ++startIndex;
     }
 
-    // FIXME: Использован std::endl вместо "\n" для переноса строк
-    std::cout << "Максимальный вес артефактов = " << bestSumWeight << std::endl
-        << "Объем взятых артефактов = " << bestSumVolume << std::endl;
+    // FIXME: Г€Г±ГЇГ®Г«ГјГ§Г®ГўГ Г­ std::endl ГўГ¬ГҐГ±ГІГ® "\n" Г¤Г«Гї ГЇГҐГ°ГҐГ­Г®Г±Г  Г±ГІГ°Г®ГЄ
+    std::cout << "ГЊГ ГЄГ±ГЁГ¬Г Г«ГјГ­Г»Г© ГўГҐГ± Г Г°ГІГҐГґГ ГЄГІГ®Гў = " << bestSumWeight << std::endl
+        << "ГЋГЎГєГҐГ¬ ГўГ§ГїГІГ»Гµ Г Г°ГІГҐГґГ ГЄГІГ®Гў = " << bestSumVolume << std::endl;
 }
