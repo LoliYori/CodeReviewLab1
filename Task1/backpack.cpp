@@ -4,10 +4,6 @@
  */
 
 #include "backpack.h"
-#include <iostream>
-#include <fstream>
-#include <vector>
-#include <algorithm>
 
  // FIXME: Код вынесен в функции и назван по код-стайлу
 bool SortWeight(const Artifact& a, const Artifact& b) {
