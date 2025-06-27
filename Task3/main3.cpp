@@ -2,7 +2,6 @@
  * Основной файл программы для подсчёта K-ичных чисел без двух подряд идущих нулей
  */
 #include "k_numbers_calculator.h"
-#include <iostream>
 
 int main() {
     std::cout << "Среди чисел в системе счисления с основанием K (2<=K<=10) определить " << std::endl;
@@ -13,8 +12,9 @@ int main() {
     std::cout << std::endl;
     
     // FIXME: Изменены названия перменных
-    int digits_count;
-    int base;
+    // FIXME: Инициализированы переменные
+    int digits_count = 0;
+    int base = 0;
     std::cout << "Введите число N - число разрядов в числе: ";
     std::cin >> digits_count;
     std::cout << "Введите число K - систему счисления: ";
